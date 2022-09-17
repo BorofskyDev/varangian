@@ -12,18 +12,19 @@
   overflow: hidden;
   border-right: 1px solid $primary-light;
   transition: all 500ms ease-in-out;
-
+  
+  
   &:hover,
   &focus {
-    // border-right: 1px solid $primary-light;
-    width: 15.625rem;
-  }
-
-  &__wrapper {
-    width: 15.625rem;
-    height: 100%;
-
-    &--logo {
+      // border-right: 1px solid $primary-light;
+      width: 15.625rem;
+    }
+    
+    &__wrapper {
+        width: 15.625rem;
+        height: 100%;
+        
+        &--logo {
       background: $primary;
       padding-inline: 1rem;
       display: flex;
