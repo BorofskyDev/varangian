@@ -1,12 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Barlow:wght@400;700&family=Bellefair&display=swap');
+/* Imports for font and other things */
 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
 /********************/
 /* Custom Properties*/
 /********************/
 
+
+/* Imports for font-faces, if any */
 @font-face {
   font-family: 'Norse';
-  src: local('Norse'), url('../assets/fonts/Norse.otf') format('opentype');
+  src: local('Norse'), url('../assets/fonts/Norsebold.otf') format('opentype');
+  font-weight: bold;
 }
 
 @font-face {
@@ -24,7 +28,7 @@
   /* Colors */
   --primary: #40c1ac;
   --secondary: #6b40c1;
-  --accent: #40c16c;
+  --accent: #7A0021;
 
   --primary-dark: #067f73;
   --primary-light: #d8ebe8;
@@ -32,9 +36,18 @@
   --black: #0f0f0f;
 
   /* Font-Families */
-  --ff-serif: 'Norse', serif;
-  --ff-sans-cond: 'Twinkling', serif;
-  --ff-sans-normal: 'Viking', serif;
+  --ff-title: 'Norse', sans-serif;
+  --ff-main: 'Playfair Display', serif
+  
+  /* Font Size */
+  --fs-subtext: font-size: clamp(0.5rem, 4.3vw - 1rem, 1.7rem);
+  --fs-bodytext: font-size: clamp(1rem, 5.7vw - 1rem, 2.6rem);
+
+  --fs-subtitle: font-size: clamp(1.5rem, 7.5vw - 1.1rem, 3.6rem);
+  --fs-title: font-size: clamp(2rem, 8.9vw - 1.1rem, 4.5rem);
+
+  --fs-subheading: font-size: clamp(3rem, 11.7vw - 1rem, 6.3rem);
+  --fs-heading: font-size: clamp(4rem, 14.6vw - 1rem, 8.1rem);
 }
 
 /********************/
@@ -76,12 +89,14 @@ p {
 
 /* Set Up Body */
 body {
-  font-family: var(--ff-sans-normal);
-  font-size: var(--fs-400);
-  color: hsl(var(--clr-white));
-  background-color: hsl(var(--clr-dark));
+  font-family: var(--ff-serif);
+   font-size: var(--fs-bodytext);
+  color: var(--primary-light);
+  background-color: var(--black);
   line-height: 1.5;
   min-height: 100vh;
+  letter-spacing: 2px;
+  line-height: 1.2;
 }
 
 /* Images Preset */
@@ -156,63 +171,44 @@ select {
 
 /* Colors */
 .bg-dark {
-  background-color: hsl(var(--clr-dark));
+  background-color: var(--black);
 }
 
-.bg-light {
-  background-color: hsl(var(--clr-light));
-}
-
-.bg-white {
-  background-color: hsl(var(--clr-white));
-}
-
-.bg-accent-primary {
-  background-color: hsl(var(--clr-accent-primary));
-}
-
-.bg-accent-secondary {
-  background-color: hsl(var(--clr-accent-secondary));
+.text-black {
+  color: var(--black);
 }
 
 .text-dark {
-  color: hsl(var(--clr-dark));
+  color: var(--accent-dark)
 }
 
 .text-light {
-  color: hsl(var(--clr-light));
+  color: var(--primary-light);
 }
 
-.text-white {
-  color: hsl(var(--clr-white));
-}
-
-.example-component {
-  background-color: hsl(var(--clr-light) / 0.2);
-}
 
 /* typography */
-.ff-serif {
-  font-family: var(--ff-serif);
+.ff-body {
+  font-family: var(--ff-viking);
 }
 
-.ff-sans-cond {
-  font-family: var(--ff-sans-cond);
+.ff-title {
+  font-family: var(--ff-norse);
 }
 
-.ff-sans-normal {
-  font-family: var(--ff-sans-normal);
+.ff-header {
+  font-family: var(--ff-twinkling);
 }
 
-.letter-spacing-1 {
+.letter-spacing-large {
   letter-spacing: 4.75px;
 }
 
-.letter-spacing-2 {
+.letter-spacing-medium {
   letter-spacing: 2.7px;
 }
 
-.letter-spacing-3 {
+.letter-spacing-small {
   letter-spacing: 2.35px;
 }
 
@@ -221,44 +217,47 @@ select {
 }
 
 .fs-900 {
-  font-size: clamp(1.728rem, 23vw - 5.5rem, 8.916rem);
+  font-size: var(--fs-heading);
 }
 
 .fs-800 {
-font-size: clamp(1.44rem, 19.1vw - 4.5rem, 7.42rem);}
-
-.fs-700 {
-font-size: clamp(1.2rem, 16vw - 3.8rem, 6.192rem);}
-
-.fs-600 {
-font-size: clamp(1rem, 13.3vw - 3.2rem, 5.16rem);}
-
-.fs-500 {
-  font-size: clamp(0.833rem, 11.1vw - 2.6rem, 4.3rem);
+  font-size: var(--fs-subheading);
 }
 
-.fs-400 {
-  font-size: clamp(0.694rem, 9.2vw - 2.2rem, 3.583rem);
+.fs-600 {
+  font-size: var(--fs-title);
+}
+
+.fs-500 {
+  font-size: var(--fs-subtitle);
 }
 
 .fs-300 {
-  font-size: clamp(0.579rem, 7.7vw - 1.8rem, 2.986rem);
+  font-size: var(--fs-bodytext);
 }
 
 .fs-200 {
-  font-size: clamp(0.482rem, 5.1vw - 1.1rem, 2.488rem);
+  font-size: var(--fs-subtext);
 }
 
 .fs-900,
-.fs-800,
-.fs-700,
+.fs-800 {
+  line-height: 2;
+}
+
+.fs-500,
 .fs-600 {
-  line-height: 1.1;
+  line-height: 1.7;
+}
+
+.fs-300,
+.fs-200 {
+  line-height: 1.5
 }
 
 .numbered-title {
-  font-family: var(--ff-sans-cond);
-  font-size: var(--fs-500);
+  font-family: var(--ff-norse);
+  font-size: var(--fs-title);
   text-transform: uppercase;
   letter-spacing: 4.72px;
 }
@@ -266,7 +265,7 @@ font-size: clamp(1rem, 13.3vw - 3.2rem, 5.16rem);}
 .numbered-title span {
   margin-right: 0.5em;
   font-weight: 700;
-  color: hsl(var(--clr-accent-primary) / 0.65);
+  color: var(--primary);
 }
 
 /********************/
@@ -276,7 +275,7 @@ font-size: clamp(1rem, 13.3vw - 3.2rem, 5.16rem);}
 
 /* text */
 .gradient-text {
-  background-image: linear-gradient(45deg, #ff99669a, #aad5ee9a, #66ccff9a);
+  background-image: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -287,11 +286,11 @@ font-size: clamp(1rem, 13.3vw - 3.2rem, 5.16rem);}
 
 .gradient-text:hover,
 .gradient-text:focus {
-  background-image: linear-gradient(-45deg, #ff9966, #aad5ee, #66ccff);
+  background-image: linear-gradient(-45deg, var(--accent), var(--primary-dark), var(--primary), var(--secondary));
 }
 
 .gradient-text.active {
-  background-image: linear-gradient(75deg, #66ccff, #aad5ee, #ff9966);
+  background-image: linear-gradient(75deg, var(--primary), var(--primary-dark), var(--accent), var(--accent-dark), var(--secondary));
   animation: animatedText 4s infinite alternate-reverse;
 }
 
@@ -312,6 +311,11 @@ font-size: clamp(1rem, 13.3vw - 3.2rem, 5.16rem);}
   /* z-index: 1; */
   place-items: center;
   padding: 0 2em;
+  font-family: var(--ff-norse);
+  font-size: 2rem;
+  letter-spacing: 15px;
+  background: var(--accent-dark);
+  color: var(--primary-light);
   border-radius: 50%;
   /* modern CSS, aspect radio. It's width / height. 
     If a square, one number, otherwise divide.
@@ -329,14 +333,18 @@ font-size: clamp(1rem, 13.3vw - 3.2rem, 5.16rem);}
   height: calc(100% + 4px);
   background: linear-gradient(
     -50deg,
-    #66ccff,
-    #000e14,
-    #ff9966,
-    #aad5ee,
-    #66ccff,
-    #000e14,
-    #ff9966,
-    #aad5ee
+    var(--primary),
+    var(--primary-dark),
+    var(--accent),
+    var(--accent-dark),
+    var(--primary-light),
+    var(--secondary),
+    var(--primary),
+    var(--primary-dark),
+    var(--accent),
+    var(--accent-dark),
+    var(--primary-light),
+    var(--secondary)
   );
   background-size: 400%;
   border-radius: 50%;
@@ -360,8 +368,10 @@ font-size: clamp(1rem, 13.3vw - 3.2rem, 5.16rem);}
 
 .large-button:hover,
 .large-button:focus {
-  background-color: hsl(var(--clr-dark));
-  color: hsl(var(--clr-light));
+  background-color: var(--black);
+  color: var(--primary);
+  font-family: var(--ff-twinkling);
+  letter-spacing: 3.1px;
 }
 
 .large-button:hover::before,
@@ -391,25 +401,26 @@ font-size: clamp(1rem, 13.3vw - 3.2rem, 5.16rem);}
   cursor: pointer;
   padding: var(--underline-gap, 1rem) 0;
   border: 0;
-  border-bottom: 0.2rem solid hsl(var(--clr-white) / 0);
-}
-
-.underline-indicators > *:hover,
-.underline-indicators > *:focus {
-  border-color: hsl(var(--clr-white) / 0.5);
+  border-bottom: 0.2rem solid var(--primary);
 }
 
 .underline-indicators > .active,
 .underline-indicators > [aria-selected='true'] {
   border-image: linear-gradient(
     90deg,
-    #000e14,
-    #66ccff,
-    #ff9966,
-    #66ccff,
-    #000e14
+    var(--accent-dark),
+    var(--secondary),
+    var(--primary),
+    var(--primary),
+    var(--secondary),
+    var(--accent-dark)
   );
   border-image-slice: 1;
+}
+
+.underline-indicators > *:hover,
+.underline-indicators > *:focus {
+  border-color: var(--secondary);
 }
 
 .tab-list {
@@ -421,16 +432,16 @@ font-size: clamp(1rem, 13.3vw - 3.2rem, 5.16rem);}
   border: 0;
   border-radius: 50%;
   padding: 0.5em;
-  background-color: hsl(var(--clr-white) / 0.25);
+  background-color: var(--primary-light);
 }
 
 .dot-indicators > *:hover,
 .dot-indicators > *:focus {
-  background-color: hsl(var(--clr-white) / 0.5);
+  background-color: var(--secondary);
 }
 
 .dot-indicators > [aria-selected='true'] {
-  background-color: hsl(var(--clr-white) / 1);
+  background-color: var(--primary);
 }
 
 /* numbers indicator */
@@ -449,18 +460,21 @@ font-size: clamp(1rem, 13.3vw - 3.2rem, 5.16rem);}
   padding: 0 2rem;
   border-radius: 50%;
   aspect-ratio: 1;
-  background-color: hsl(var(--clr-dark) / 0.25);
-  color: hsl(var(--clr-white) / 1);
-  border: 2.5px solid hsl(var(--clr-light) / 0.5);
+  background-color: var(--accent-dark);
+  color: var(--primary-light);
+  border: 2.5px solid var(--primary);
 }
 
 .numbers-indicators > *:hover,
 .numbers-indicators > *:focus {
-  border-color: hsl(var(--clr-accent-primary) / 0.7);
+  border-color: var(--secondary);
+  color: var(--primary-light);
+  background: var(--primary-dark)
 }
 
 .numbers-indicators > [aria-selected='true'] {
-  background-color: hsl(var(--clr-light) / 1);
-  color: hsl(var(--clr-dark));
-  border-color: hsl(var(--clr-accent-primary));
+  background-color: var(--primary);
+  color: var(--primary-light);
+  font-weight: bold;
+  border-color: var(--accent);
 }

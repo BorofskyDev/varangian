@@ -1,0 +1,142 @@
+/* Imports for font and other things */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Runic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+
+/********************/
+/* Custom Properties*/
+/********************/
+
+
+/* Imports for font-faces, if any */
+@font-face {
+  font-family: 'Norse';
+  src: local('Norse'), url('../../assets/fonts/Norsebold.otf') format('opentype');
+  font-weight: bold;
+}
+
+
+
+
+
+/* Colors */
+$primary: #40c1ac;
+$secondary: #6b40c1;
+$accent: #7A0021;
+
+$primary-dark: #067f73;
+$primary-light: #d8ebe8;
+$accent-dark: #07272d;
+$black: #0f0f0f;
+
+/* Font-Families */
+ 
+
+
+  $ff-main: 'Noto Serif', serif;
+$ff-title: 'Norse', sans-serif;
+$ff-runes: 'Noto Sans Runic', sans-serif;
+
+/* Font Size */
+$fs-subtext: clamp(0.5rem, 4.3vw - 1rem, 1.7rem);
+$fs-bodytext: clamp(1rem, 5.7vw - 1rem, 2.6rem);
+
+$fs-subtitle: clamp(1.5rem, 7.5vw - 1.1rem, 3.6rem);
+$fs-title: clamp(2rem, 8.9vw - 1.1rem, 4.5rem);
+
+$fs-subheading: clamp(3rem, 11.7vw - 1rem, 6.3rem);
+$fs-heading: clamp(4rem, 14.6vw - 1rem, 8.1rem);
+
+
+/********************/
+/*     CSS Reset    */
+/********************/
+
+/* Box Sizing */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reset Margin */
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+picture {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-weight: 400;
+}
+
+/* Set Up Body */
+body {
+ font-family: $ff-main;
+   font-size: $fs-bodytext;
+  color: $primary-light;
+  background-color: $black;
+  line-height: 1.5;
+  min-height: 100vh;
+  letter-spacing: 2px;
+  line-height: 1.2;
+}
+
+/* Images Preset */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Forms Preset */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove Animations/Access */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Screen Reader */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
