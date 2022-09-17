@@ -7,14 +7,14 @@
   top: 0px;
   left: 0px;
   width: 5.75rem;
-  //   width: 15.625rem;
+//   width: 15.625rem;
   height: 100vh;
-  background: $black;
   overflow: hidden;
   transition: all 500ms ease-in-out;
 
   &:hover,
   &focus {
+    border-right: 1px solid $primary-light;
     width: 15.625rem;
   }
 
@@ -23,12 +23,11 @@
     height: 100%;
 
     &--logo {
-      background: $accent-dark;
+      background: $primary;
       padding-inline: 1rem;
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      
 
       & img {
         width: 60px;
@@ -58,7 +57,9 @@
     }
 
     &--content {
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 1.1rem;
       margin-left: 1.6rem;
       font-family: 'Noto Sans Runic', sans-serif;
@@ -74,5 +75,59 @@
     border-bottom: 1px solid $secondary;
     margin: 20px 0;
     width: 100%;
+  }
+}
+
+.coolLink {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: $accent;
+    transform: scale3d(0, 1, 1);
+    transform-origin: bottom;
+    transition: transform 0.3s cubic-bezier(0.5, 0.5, 0.3, 0.1);
+  }
+
+  &:after {
+    content: attr(data-text);
+    color: $primary-light;
+    position: absolute;
+    left: 1rem;
+    text-transform: uppercase;
+    font-size: 1rem;
+    // font-weight: bold;
+    height: -100%;
+    transform: translate3d(0, 200%, 0);
+    transition: transform 0.3s cubic-bezier(0.5, 0.5 0.3, 0.1);
+}
+
+& span {
+      transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.5, 0.5, 0.3, 0.1);
+  }
+
+  &:hover:before,
+  &:focus:before {
+    transform: scale3d(1, 1, 1);
+    transform-origin: left;
+  }
+
+  &:hover:after,
+  &:focus:after {
+    transform: translate3d(0, 0, 0);
+  }
+
+  &:hover span,
+  &:focus span {
+    transform: translate3d(0, -200%, 0);
   }
 }
