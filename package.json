@@ -23,6 +23,7 @@
   "dependencies": {
     "dat.gui": "^0.7.9",
     "gsap": "^3.11.1",
+    "postprocessing": "^6.28.7",
     "three": "^0.144.0",
     "vercel": "^28.2.4"
   }

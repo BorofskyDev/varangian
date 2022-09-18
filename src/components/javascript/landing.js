@@ -1,13 +1,17 @@
 import * as THREE from 'three';
-import wood from '../../assets/textures/ball2.png'
+import wood from '../../assets/textures/ball2.png';
+import smoke from '../../assets/textures/smoke_08.png';
+
+// let cloudParticles = []
 
 // LOAD
-const textureLoader = new THREE.TextureLoader()
+const textureLoader = new THREE.TextureLoader();
 
-const normalTexture = textureLoader.load(wood)
+const normalTexture = textureLoader.load(wood);
+// const smokeTexture = textureLoader.load(smoke);
 
 // Canvas
-const canvas = document.querySelector('canvas')
+const canvas = document.querySelector('canvas');
 
 // SCENE
 
@@ -16,7 +20,13 @@ const scene = new THREE.Scene();
 // Objects
 const sphereGeometry = new THREE.SphereGeometry(1, 64, 64);
 
+// const cloudGeo = new THREE.PlaneGeometry(500, 500);
+
 // MATERIALS
+
+// const cloudMaterial = new THREE.MeshLambertMaterial();
+// cloudMaterial.map = smokeTexture;
+// cloudMaterial.transparent = true;
 
 const material = new THREE.MeshStandardMaterial();
 material.metalness = 0.1;
@@ -27,8 +37,23 @@ material.color = new THREE.Color(0x292929);
 
 // MESH
 const sphere = new THREE.Mesh(sphereGeometry, material);
-sphere.position.set(1, 0, -1) 
+sphere.position.set(1, 0, -1);
 scene.add(sphere);
+
+// for(let p=0; p<50; p++){
+
+// const clouds = new THREE.Mesh(cloudGeo, cloudMaterial);
+// clouds.position.set(Math.random() * 800 - 400, 500, Math.random() * 500 - 500);
+// clouds.rotation.x = 1.16;
+// clouds.rotation.y = -0.12;
+// clouds.rotation.z = Math.random() * 2 * Math.PI;
+// clouds.material.opacity = 0.55;
+// cloudParticles.push(clouds)
+// scene.add(clouds)}
+
+// AMBIENT LIGHT
+// const ambient = new THREE.AmbientLight(0xd8ebe8);
+// scene.add(ambient);
 
 // LIGHT 1
 const pointLight1 = new THREE.PointLight(0x40c1ac, 2);
@@ -57,8 +82,6 @@ pointLight4.position.set(6.5, 0, 0);
 pointLight4.intensity = 2;
 
 scene.add(pointLight4);
-
-
 
 const sizes = {
   width: window.innerWidth,
@@ -109,6 +132,10 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
+// ADD FOG
+scene.fog = new THREE.FogExp2(0x07272d, 0.001);
+renderer.setClearColor(scene.fog.color);
+
 /**
  * Animate
  */
@@ -148,7 +175,7 @@ const tick = () => {
 
   sphere.rotation.y += 0.05 * (targetX - sphere.rotation.y);
   sphere.rotation.x += 0.05 * (targetX - sphere.rotation.x);
-//   sphere.position.z += -0.01 * (targetY - sphere.rotation.x);
+  //   sphere.position.z += -0.01 * (targetY - sphere.rotation.x);
 
   // Render
   renderer.render(scene, camera);
